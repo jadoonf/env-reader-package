@@ -10,7 +10,7 @@ permissions:
 
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,10 +23,11 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://npm.pkg.github.com'
 
+      - name: Authenticate to GitHub Packages
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+
       - name: Install dependencies
         run: npm install
 
       - name: Publish to GitHub Packages
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
