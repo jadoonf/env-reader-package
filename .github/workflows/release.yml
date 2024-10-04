@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 permissions:
+  contents: read
   packages: write
-  contents: write
 
 jobs:
   publish:
@@ -24,7 +24,9 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
 
       - name: Authenticate to GitHub Packages using PAT
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_PAT }}" > ~/.npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
+        run: npm config set //npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
 
       - name: Install dependencies
         run: npm install
