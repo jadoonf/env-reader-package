@@ -1,4 +1,4 @@
-name: Release Package
+name: Install Package
 
 on:
   release:
@@ -6,9 +6,6 @@ on:
       - published
   workflow_dispatch:
 
-permissions:
-  contents: read
-  packages: write
 
 jobs:
   publish:
@@ -24,13 +21,6 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://npm.pkg.github.com'
 
-      - name: Authenticate to GitHub Packages
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
-        run: npm config set //npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
 
       - name: Install dependencies
         run: npm install
-
-      - name: Publish to GitHub Packages
-        run: npm publish
