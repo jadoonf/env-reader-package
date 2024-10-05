@@ -1,9 +1,7 @@
 name: Install Package
 
 on:
-  release:
-    types: 
-      - published
+  push:
   workflow_dispatch:
 
 
